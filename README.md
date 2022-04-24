@@ -1,3 +1,5 @@
+### Basic
+
 `typescript`
 get access to the command line TypeScript compiler through the `tsc` command
 
@@ -41,3 +43,52 @@ Builds the app at build, cleaning the folder first.
 
 `npm run start`
 Starts the app in production by first building the project with npm run build, and then executing the compiled JavaScript at build/index.js.
+
+==========================================
+
+### ESLint
+
+- ESLint is a JavaScript linter that enables you to enforce a set of style, formatting, and coding standards for your codebase
+- It looks at your code, and tells you when you're not following the standard that you set in place
+
+`npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin`
+Install all packages
+
+`.eslintrc`
+Eslint configuration file
+
+`.eslintignore`
+Ignoring files we don't want to lint
+
+`"lint": "eslint . --ext .ts"` & `npm run lint`
+It looks at your code, and tells you when you're not following the standard that you set in place
+
+`"rules": { }`
+*disallow* statements in our code
+- "off" means 0
+- "warn" means 1
+- "error" means 2
+Ex: *disallow* `console.log`
+```js
+"rules": { 
+    "no-console": 1 
+  }
+```
+`Adding a plugin (features)`
+Ex: [no-loops](https://github.com/buildo/eslint-plugin-no-loops) - *Disallow* use of loops (for, for-in, while, do-while, for-of)
+```js
+"rules": {
+    ...,
+    "no-loops/no-loops": 2
+  }
+```
+
+`Extending a different base config`
+```js
+"extends": [
+    "plugin:shopify/esnext"
+  ],
+```
+
+`"lint-and-fix": "eslint . --ext .ts --fix"`
+tell Eslint to fix things that it's able to fix at the same time.
