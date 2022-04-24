@@ -90,5 +90,58 @@ Ex: [no-loops](https://github.com/buildo/eslint-plugin-no-loops) - *Disallow* us
   ],
 ```
 
-`"lint-and-fix": "eslint . --ext .ts --fix"`
+`{ script: {"lint-and-fix": "eslint . --ext .ts --fix"}}`
 tell Eslint to fix things that it's able to fix at the same time.
+
+==========================================
+
+### Prettier
+
+- `Prettier` can be configured to format your code (makes it look prettier 😉) after you save a file or manually tell it to, and by default, it comes configured with a set of common code cleanliness rules.
+- `ESLint` defines the code conventions
+- `Prettier` performs the auto-formatting based on the ESLint rules
+
+`npm install --save-dev prettier`
+Install prettier
+
+`.prettierrc`
+Prettier configuration file
+```json
+{
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "printWidth": 80
+}
+```
+
+`{script: {"prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"}}`
+
+#### Prettier VS Code Extension
+
+#### Prettier and ESLint
+`npm install --save-dev eslint-config-prettier eslint-plugin-prettier`
+- eslint-config-prettier: Turns off all ESLint rules that have the potential to interfere with Prettier rules.
+- eslint-plugin-prettier: Turns Prettier rules into ESLint rules.
+- `npm run lint`: check lint
+- `npm run prettier-format`: format style
+  
+==========================================
+
+### Husky
+
+- Husky is an npm package that "makes Git hooks easy".
+- Enforcing precommit
+
+#### Usage
+`npm install husky --save-dev`
+```json
+{
+  script: {
+    "prepare": "husky install"
+  }
+}
+```
+`npm run prepare`
+`npx husky-init`
+`add to pre-commit: npm run prettier-format && npm run lint`
