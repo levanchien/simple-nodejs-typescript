@@ -119,6 +119,12 @@ Prettier configuration file
 
 #### Prettier VS Code Extension
 
+```json
+"eslint.options": {
+  "configFile": ".eslintrc"
+}
+```
+
 #### Prettier and ESLint
 `npm install --save-dev eslint-config-prettier eslint-plugin-prettier`
 - eslint-config-prettier: Turns off all ESLint rules that have the potential to interfere with Prettier rules.
